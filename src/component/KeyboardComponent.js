@@ -6,7 +6,6 @@ import 'react-simple-keyboard/build/css/index.css';
 const KeyboardComponent = ({ handleTextChange}) => {
   return (
     <div className="keyboard-wrapper">
-     
       <Keyboard
         layout={{
           default: [

@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import KeyboardComponent from './KeyboardComponent';
 import TypingAreaComponent from './TypingAreaComponent';
@@ -93,9 +93,9 @@ const TypingGame = () => {
     dispatch(setAccuracy(accuracy.toFixed(2)));
   };
 
-  // useEffect(() => {
-  //   handleSentenceChange();
-  // }, [handleSentenceChange]);
+  useEffect(() => {
+    handleSentenceChange();
+  });
 
   return (
     <div className="typing-game-container">
