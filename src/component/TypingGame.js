@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState , useCallback} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import KeyboardComponent from './KeyboardComponent';
 import TypingAreaComponent from './TypingAreaComponent';
@@ -55,11 +55,11 @@ const TypingGame = () => {
     setRemainingTime(300);
   };
 
-  const calculateWPM = (typedWordsCount, minutes) => {
+  const calculateWPM = useCallback((typedWordsCount, minutes) => {
     return Math.floor(typedWordsCount / minutes);
-  };
+  }, []);
 
-  const calculateAccuracy = (originalSentence, userSentence) => {
+  const calculateAccuracy = useCallback((originalSentence, userSentence) => {
     let matchCount = 0;
     const totalCharacters = originalSentence.length;
 
@@ -71,26 +71,29 @@ const TypingGame = () => {
 
     const accuracy = (matchCount / totalCharacters) * 100;
     return accuracy;
-  };
+  }, []);
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
+  const handleFormSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
 
-    const originalSentence = typingGame.currentSentence;
-    const userSentence = typingGame.typedText;
+      const originalSentence = typingGame.currentSentence;
+      const userSentence = typingGame.typedText;
 
-    const accuracy = calculateAccuracy(originalSentence, userSentence);
+      const accuracy = calculateAccuracy(originalSentence, userSentence);
+      const typedWordsCount = userSentence.trim().split(' ').length;
 
-    const typedWordsCount = userSentence.trim().split(' ').length;
+      const endTime = Date.now();
+      const minutes = (endTime - typingGame.startTime) / 60000;
 
-    const endTime = Date.now();
-    const minutes = (endTime - typingGame.startTime) / 60000;
+      const calculatedWPM = calculateWPM(typedWordsCount + 1, minutes);
 
-    const calculatedWPM = calculateWPM(typedWordsCount + 1, minutes);
-
-    dispatch(setWPM(calculatedWPM));
-    dispatch(setAccuracy(accuracy.toFixed(2)));
-  };
+      dispatch(setWPM(calculatedWPM));
+      dispatch(setAccuracy(accuracy.toFixed(2)));
+      window.location.reload();
+    },
+    [dispatch, typingGame.currentSentence, typingGame.startTime, typingGame.typedText, calculateAccuracy, calculateWPM]
+  );
 
   useEffect(() => {
     handleSentenceChange();
