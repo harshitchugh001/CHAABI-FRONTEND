@@ -93,9 +93,9 @@ const TypingGame = () => {
     dispatch(setAccuracy(accuracy.toFixed(2)));
   };
 
-  useEffect(() => {
-    handleSentenceChange();
-  });
+  // useEffect(() => {
+  //   handleSentenceChange();
+  // }, [handleSentenceChange]);
 
   return (
     <div className="typing-game-container">
