@@ -1,0 +1,91 @@
+.typing-game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .content {
+    text-align: center;
+  }
+  
+  .heading {
+    margin-bottom: 1rem;
+  }
+  
+  .sentences-box {
+    margin-bottom: 1rem;
+  }
+  
+  .sentence {
+    margin-bottom: 1rem;
+  }
+  
+  .typing-textarea {
+    width: 400px;
+    margin-bottom: 1rem;
+  }
+  
+  .input-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .features {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  
+  .individual-feature {
+    margin: 0 0.5rem;
+  }
+  
+  .change-sentence-button {
+    padding: 0.5rem 1rem;
+  }
+  
+  .keyboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .keyboard-letter-wrapper {
+    margin-bottom: 1rem;
+  }
+  
+  .highlighted-key {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+    background-color: #e4e4e4;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .keyboard-wrapper {
+    margin-bottom: 1rem;
+  }
+  
+  .keyboard-container .keyboard-wrapper .hg-button {
+    width: 5rem;
+    height: 3rem;
+  }
+  
+  .keyboard-container .keyboard-wrapper .hg-button span {
+    font-size: 1.5rem;
+  }
+  
+  .keyboard-container .keyboard-wrapper .hg-button.active {
+    background-color: #4caf50;
+  }
+  
+  .keyboard-container .keyboard-wrapper .hg-button.active span {
+    color: #fff;
+  }
+  
