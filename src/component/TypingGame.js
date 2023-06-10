@@ -95,7 +95,7 @@ const TypingGame = () => {
 
   useEffect(() => {
     handleSentenceChange();
-  }, []);
+  });
 
   return (
     <div className="typing-game-container">
